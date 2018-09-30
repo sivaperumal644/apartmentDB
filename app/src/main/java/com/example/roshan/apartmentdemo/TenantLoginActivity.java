@@ -1,5 +1,7 @@
 package com.example.roshan.apartmentdemo;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +20,27 @@ public class TenantLoginActivity extends AppCompatActivity {
     }
 
     public void handleTroubleSigningIn(View view) {
-        Toast.makeText(this, "This action calls the trouble signing in method.", Toast.LENGTH_SHORT).show();
+        new AlertDialog.Builder(this).setMessage("Please contact the flat owner who has registered your tenant account for your login credentials.\n\nYou can request new ID from the owner if you want.")
+                .setTitle("Trouble signing in")
+                .setPositiveButton(
+                        "Request new ID",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(TenantLoginActivity.this, "Request sent to your flat owner", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                )
+                .setNegativeButton(
+                        "Cancel",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        }
+                ).setCancelable(false).create().show();
+
     }
 }
 
