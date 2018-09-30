@@ -18,9 +18,9 @@ public class QueryUtility extends SQLiteOpenHelper{
     private final static int DATABASE_VERSION = 1;
     private Context context;
 
-    String CREATE_FLAT_TABLE_QUERY = "CREATE TABLE " + FLATS_TABLE + " (name text, address text, city text)";
+    String CREATE_FLAT_TABLE_QUERY = "CREATE TABLE " + FLATS_TABLE + " (name text, address text, city text, image blob)";
     String CREATE_SESSION_TABLE_QUERY = "CREATE TABLE " + SESSION_TABLE + " (userID text, password text)";
-    String CREATE_TENANT_TABLE_QUERY = "CREATE TABLE " + TENANTS_TABLE + " (id text PRIMARY KEY, name text, flat text, FOREIGNKEY flat references flats(name), contact text, email text, password text, rent int, charges int)";
+    String CREATE_TENANT_TABLE_QUERY = "CREATE TABLE " + TENANTS_TABLE + " (id text PRIMARY KEY, name text, flat text, FOREIGNKEY flat references flats(name), contact text, email text, password text, rent int, charges int, image blob)";
 
 
     private static QueryUtility instance;
@@ -78,5 +78,7 @@ public class QueryUtility extends SQLiteOpenHelper{
         db.endTransaction();
         db.close();
     }
+
+    
 
 }

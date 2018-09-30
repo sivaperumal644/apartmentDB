@@ -38,10 +38,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void startTenantLoginActivity(View view) {
         startActivity(new Intent(this, TenantLoginActivity.class));
+        finish();
     }
 
     public void startOwnerLoginActivity(View view) {
         startActivity(new Intent(this, OwnerLoginActivity.class));
+        finish();
     }
 
     public void autoSignIn() {
