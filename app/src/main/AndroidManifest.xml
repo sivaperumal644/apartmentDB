@@ -18,14 +18,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".TenantLoginActivity" >
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="MainActivity" />
+
         </activity>
         <activity android:name=".OwnerLoginActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="MainActivity" />
+
         </activity>
     </application>
 

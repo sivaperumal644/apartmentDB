@@ -26,14 +26,15 @@
             android:text="Sign in to your Owner Account"
             android:layout_marginBottom="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter your Owner ID"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
             android:layout_marginTop="16dp"
-            />
+            android:layout_marginRight="16dp"
+            android:hint="Enter your Owner ID"
+            android:inputType="text" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,6 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:layout_marginTop="0dp"
+            android:onClick="performSignIn"
             android:text="Sign in" />
 
         <Button
@@ -56,6 +58,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:text="Trouble Signing in?"
+            android:onClick="handleTroubleSigningIn"
             android:textAlignment="textStart" />
     </LinearLayout>
 
