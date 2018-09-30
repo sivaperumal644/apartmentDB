@@ -19,5 +19,5 @@ public class OwnerDashboardActivity extends AppCompatActivity {
 }
 
 
-/*TODO: Implement a three-dot menu in action bar to call logOut method */
+/*TODO: Implement a three-dot menu with item "Log Out" in action bar to call logOut method */
 /* TODO: The BACK functionality should be REMOVED for this activity. If user performs back, it should exit to launcher, it should not show login activity */
