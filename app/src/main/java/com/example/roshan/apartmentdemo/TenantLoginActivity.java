@@ -21,3 +21,5 @@ public class TenantLoginActivity extends AppCompatActivity {
         Toast.makeText(this, "This action calls the trouble signing in method.", Toast.LENGTH_SHORT).show();
     }
 }
+
+/* TODO: Need to implement back button in the action bar for this activity dude, so that it will go back to Main Activity. */
