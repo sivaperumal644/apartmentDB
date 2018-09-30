@@ -51,7 +51,7 @@ public class OwnerLoginActivity extends AppCompatActivity {
                 ).setCancelable(false).create().show();
     }
 
-  
+
 }
 
 /* TODO: Need to implement back button in the action bar for this activity dude, so that it will go back to Main Activity. */
