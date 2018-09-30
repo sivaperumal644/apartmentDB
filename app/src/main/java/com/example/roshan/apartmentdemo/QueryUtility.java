@@ -20,7 +20,7 @@ public class QueryUtility extends SQLiteOpenHelper{
 
     String CREATE_FLAT_TABLE_QUERY = "CREATE TABLE " + FLATS_TABLE + " (name text, address text, city text)";
     String CREATE_SESSION_TABLE_QUERY = "CREATE TABLE " + SESSION_TABLE + " (userID text, password text)";
-    String CREATE_TENANT_TABLE_QUERY = "CREATE TABLE " + TENANTS_TABLE + " (id text PRIMARY KEY, name text, flat text, FOREIGNKEY flat references flats(name), contact text, email text, password text)";
+    String CREATE_TENANT_TABLE_QUERY = "CREATE TABLE " + TENANTS_TABLE + " (id text PRIMARY KEY, name text, flat text, FOREIGNKEY flat references flats(name), contact text, email text, password text, rent int, charges int)";
 
 
     private static QueryUtility instance;

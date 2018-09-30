@@ -41,4 +41,8 @@ public class OwnerDashboardActivity extends AppCompatActivity {
     }
 }
 
+/* TODO: Prevent login activities to appear after login, when back action is done by user. */
+/* TODO: Implement list view for flat list: The properties should be image, flat name, flat city. Use dummy data for populating.*/
+/* TODO: Implement list view for tenant list: The properties should be image, tenant name, flat name. Use dummy data for populating.*/
+
 

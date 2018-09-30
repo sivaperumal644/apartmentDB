@@ -46,3 +46,5 @@
 
     </LinearLayout>
 </ScrollView>
+
+<!-- TODO: Need to implement a FAB with action of Add Tenant, with plus icon. -->
