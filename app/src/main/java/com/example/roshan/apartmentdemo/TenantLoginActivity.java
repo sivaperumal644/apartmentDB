@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class TenantLoginActivity extends AppCompatActivity {
@@ -14,7 +15,7 @@ public class TenantLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tenant_login);
-        getSupportActionBar().setTitle("Apartment Demo");
+        getSupportActionBar().setTitle("Tenant Login");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
@@ -29,6 +30,16 @@ public class TenantLoginActivity extends AppCompatActivity {
 
 
     public void performSignIn(View view) {
+        EditText userID = (EditText) findViewById(R.id.idEditText);
+        EditText password = (EditText) findViewById(R.id.passwordEditText);
+        if(userID.getText().toString().isEmpty()) {
+            userID.setError("Please enter your ID");
+            return;
+        }
+        if(password.getText().toString().isEmpty()) {
+            password.setError("Please enter your password");
+            return;
+        }
         Toast.makeText(this, "This action calls the sign-in method.", Toast.LENGTH_SHORT).show();
     }
 
@@ -57,4 +68,3 @@ public class TenantLoginActivity extends AppCompatActivity {
     }
 }
 
-/* TODO: Need to implement back button in the action bar for this activity dude, so that it will go back to Main Activity. */

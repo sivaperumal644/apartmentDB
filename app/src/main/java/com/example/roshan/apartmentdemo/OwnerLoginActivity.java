@@ -1,6 +1,7 @@
 package com.example.roshan.apartmentdemo;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +16,7 @@ public class OwnerLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_login);
-        getSupportActionBar().setTitle("Apartment Demo");
+        getSupportActionBar().setTitle("Owner Login");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
@@ -40,6 +41,7 @@ public class OwnerLoginActivity extends AppCompatActivity {
             return;
         }
         Toast.makeText(this, "This action calls the sign-in method.", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, OwnerDashboardActivity.class));
     }
 
     public void handleTroubleSigningIn(View view) {
@@ -77,4 +79,3 @@ public class OwnerLoginActivity extends AppCompatActivity {
 
 }
 
-/* TODO: Need to implement back button in the action bar for this activity dude, so that it will go back to Main Activity. */
