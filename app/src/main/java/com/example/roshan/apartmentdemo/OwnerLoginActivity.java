@@ -54,6 +54,7 @@ public class OwnerLoginActivity extends AppCompatActivity {
                 QueryUtility queryUtility = QueryUtility.getInstance(getApplicationContext());
                 queryUtility.setSessionTable("owner", "owner123");
                 startActivity(new Intent(this, OwnerDashboardActivity.class));
+                finish();
             } else {
                 password.setError("Incorrect password");
             }
