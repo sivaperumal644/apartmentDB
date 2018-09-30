@@ -40,8 +40,26 @@ public class OwnerLoginActivity extends AppCompatActivity {
             password.setError("Please enter your password");
             return;
         }
-        Toast.makeText(this, "This action calls the sign-in method.", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, OwnerDashboardActivity.class));
+
+
+        /* Dummy Sign-in procedure - Used only for development purposes
+        *
+        * Signs in the user if: id = owner; password = owner123
+        *
+        * */
+
+        if(userID.getText().toString().trim().equals("owner")) {
+            if(password.getText().toString().trim().equals("owner123")) {
+                Toast.makeText(this, "Successfully logged in", Toast.LENGTH_SHORT).show();
+                QueryUtility queryUtility = QueryUtility.getInstance(getApplicationContext());
+                queryUtility.setSessionTable("owner", "owner123");
+                startActivity(new Intent(this, OwnerDashboardActivity.class));
+            } else {
+                password.setError("Incorrect password");
+            }
+        } else {
+            userID.setError("Incorrect ID");
+        }
     }
 
     public void handleTroubleSigningIn(View view) {
@@ -75,7 +93,6 @@ public class OwnerLoginActivity extends AppCompatActivity {
                         }
                 ).setCancelable(false).create().show();
     }
-
 
 }
 

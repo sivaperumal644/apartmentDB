@@ -1,16 +1,39 @@
 package com.example.roshan.apartmentdemo;
 
+import android.app.DownloadManager;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    private class GetDatabaseTask extends AsyncTask<Void, Void, QueryUtility> {
+
+        @Override
+        protected QueryUtility doInBackground(Void... voids) {
+            return QueryUtility.getInstance(getApplicationContext());
+        }
+
+        @Override
+        protected void onPostExecute(QueryUtility queryUtility) {
+            myQuery = queryUtility;
+            Toast.makeText(MainActivity.this, "Successfully connected to DB", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, queryUtility.getSession(), Toast.LENGTH_SHORT).show();
+            autoSignIn();
+        }
+    }
+
+    QueryUtility myQuery;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        GetDatabaseTask getDatabaseTask = new GetDatabaseTask();
+        getDatabaseTask.execute();
     }
 
     public void startTenantLoginActivity(View view) {
@@ -20,4 +43,17 @@ public class MainActivity extends AppCompatActivity {
     public void startOwnerLoginActivity(View view) {
         startActivity(new Intent(this, OwnerLoginActivity.class));
     }
+
+    public void autoSignIn() {
+        if(myQuery.getSession() == (null)) {
+            return;
+        }
+        if(myQuery.getSession().equals("owner")) {
+            startActivity(new Intent(this, OwnerDashboardActivity.class));
+        }
+    }
+
+
+
+
 }
