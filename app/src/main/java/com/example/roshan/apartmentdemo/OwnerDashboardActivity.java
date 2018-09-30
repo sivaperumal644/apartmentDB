@@ -1,5 +1,6 @@
 package com.example.roshan.apartmentdemo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -34,7 +35,9 @@ public class OwnerDashboardActivity extends AppCompatActivity {
     }
 
     public void logOut() {
-        Toast.makeText(this, "Assume this performs log-out", Toast.LENGTH_SHORT).show();
+        QueryUtility.getInstance(getApplicationContext()).setSessionTable("null", "null");
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 }
 
