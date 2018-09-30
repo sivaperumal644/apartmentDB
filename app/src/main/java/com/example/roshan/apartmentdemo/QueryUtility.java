@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class QueryUtility extends SQLiteOpenHelper{
 
     private final static String TENANTS_TABLE = "tenants";
@@ -79,6 +82,25 @@ public class QueryUtility extends SQLiteOpenHelper{
         db.close();
     }
 
-    
+    public ArrayList<String> getTenantNames(String tenantID) {
+        Cursor cursor;
+        if(tenantID == null) {
+             cursor = getReadableDatabase().rawQuery("SELECT name from tenants", null);
+        } else {
+             cursor = getReadableDatabase().rawQuery("SELECT name from tenants WHERE id = '" + tenantID + "';", null);
+        }
+        ArrayList<String> nameList = new ArrayList<String>();
+        cursor.moveToFirst();
+        while(cursor.isAfterLast() == false) {
+            nameList.add(cursor.getString(0));
+            cursor.moveToNext();
+        }
+        for(String name : nameList) {
+            Log.i("NAMES", name);
+        }
+        return nameList;
+    }
+
+
 
 }

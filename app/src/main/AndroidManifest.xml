@@ -18,9 +18,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TenantLoginActivity"></activity>
-        <activity android:name=".OwnerLoginActivity"></activity>
-        <activity android:name=".OwnerDashboardActivity"></activity>
+        <activity android:name=".TenantLoginActivity" />
+        <activity android:name=".OwnerLoginActivity" />
+        <activity android:name=".OwnerDashboardActivity" />
+        <activity
+            android:name=".TenantEditActivity"
+            android:label="@string/title_activity_tenant_edit"
+            android:parentActivityName=".OwnerDashboardActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.roshan.apartmentdemo.OwnerDashboardActivity" />
+        </activity>
     </application>
 
 </manifest>

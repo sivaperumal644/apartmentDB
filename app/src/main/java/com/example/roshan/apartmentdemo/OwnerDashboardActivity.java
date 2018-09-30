@@ -1,6 +1,7 @@
 package com.example.roshan.apartmentdemo;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,11 +10,29 @@ import android.widget.Toast;
 
 public class OwnerDashboardActivity extends AppCompatActivity {
 
+    QueryUtility myQuery;
+
+    private class GetDatabaseTask extends AsyncTask<Void, Void, QueryUtility> {
+
+        @Override
+        protected QueryUtility doInBackground(Void... voids) {
+            return QueryUtility.getInstance(getApplicationContext());
+        }
+
+        @Override
+        protected void onPostExecute(QueryUtility queryUtility) {
+            myQuery = queryUtility;
+            myQuery.getTenantNames(null);
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_dashboard);
         getSupportActionBar().setTitle("Dashboard");
+        GetDatabaseTask getDatabaseTask = new GetDatabaseTask();
+        getDatabaseTask.execute();
     }
 
     @Override
