@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class OwnerLoginActivity extends AppCompatActivity {
@@ -27,8 +28,17 @@ public class OwnerLoginActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     public void performSignIn(View view) {
+        EditText userID = (EditText) findViewById(R.id.idEditText);
+        EditText password = (EditText) findViewById(R.id.passwordEditText);
+        if(userID.getText().toString().isEmpty()) {
+            userID.setError("Please enter your ID");
+            return;
+        }
+        if(password.getText().toString().isEmpty()) {
+            password.setError("Please enter your password");
+            return;
+        }
         Toast.makeText(this, "This action calls the sign-in method.", Toast.LENGTH_SHORT).show();
     }
 

@@ -33,6 +33,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginRight="16dp"
+            android:id="@+id/idEditText"
             android:hint="Enter your Owner ID"
             android:inputType="text" />
         <EditText
@@ -40,6 +41,7 @@
             android:layout_height="wrap_content"
             android:hint="Enter your Owner Password"
             android:inputType="textPassword"
+            android:id="@+id/passwordEditText"
             android:layout_margin="16dp"/>
 
         <Button
