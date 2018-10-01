@@ -45,17 +45,32 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
+        android:textStyle="bold"
+        android:textColor="#000"
         android:layout_alignParentTop="true"
         android:layout_marginTop="24dp"
         android:layout_alignParentRight="true" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/ic_location_on_black_24dp"
+                    />
             <TextView
                 android:id="@+id/flatcity"
                 android:layout_width="250dp"
+                android:layout_marginStart="5dp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:textColor="#000"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="24dp"
-                android:layout_alignParentRight="true" />
+                />
+            </LinearLayout>
         </LinearLayout>
 
     </RelativeLayout>

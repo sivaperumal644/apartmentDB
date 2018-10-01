@@ -9,12 +9,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.roshan.apartmentdemo.Database.QueryUtility;
+import com.example.roshan.apartmentdemo.Helper.CustomAdapter;
 import com.example.roshan.apartmentdemo.R;
 
 public class OwnerDashboardActivity extends AppCompatActivity {
+
 
     QueryUtility myQuery;
 
