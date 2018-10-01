@@ -1,13 +1,14 @@
-package com.example.roshan.apartmentdemo;
+package com.example.roshan.apartmentdemo.Activity;
 
-import android.app.DownloadManager;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import com.example.roshan.apartmentdemo.Database.QueryUtility;
+import com.example.roshan.apartmentdemo.R;
 
 public class MainActivity extends AppCompatActivity {
 

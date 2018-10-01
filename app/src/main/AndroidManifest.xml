@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,18 +18,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TenantLoginActivity" />
-        <activity android:name=".OwnerLoginActivity" />
-        <activity android:name=".OwnerDashboardActivity" />
+        <activity android:name=".Activity.TenantLoginActivity" />
+        <activity android:name=".Activity.OwnerLoginActivity" />
+        <activity android:name=".Activity.OwnerDashboardActivity" />
         <activity
-            android:name=".TenantEditActivity"
+            android:name=".Activity.TenantEditActivity"
             android:label="@string/title_activity_tenant_edit"
-            android:parentActivityName=".OwnerDashboardActivity"
+            android:parentActivityName=".Activity.OwnerDashboardActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.roshan.apartmentdemo.OwnerDashboardActivity" />
+                android:value="com.example.roshan.apartmentdemo.Activity.OwnerDashboardActivity" />
         </activity>
+        <activity android:name=".Activity.flatlist" />
+        <activity android:name=".Activity.tenantlist"></activity>
     </application>
 
 </manifest>

@@ -1,7 +1,6 @@
-package com.example.roshan.apartmentdemo;
+package com.example.roshan.apartmentdemo.Activity;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,13 +9,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class OwnerLoginActivity extends AppCompatActivity {
+import com.example.roshan.apartmentdemo.R;
+
+public class TenantLoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_owner_login);
-        getSupportActionBar().setTitle("Owner Login");
+        setContentView(R.layout.activity_tenant_login);
+        getSupportActionBar().setTitle("Tenant Login");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
@@ -29,6 +30,7 @@ public class OwnerLoginActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     public void performSignIn(View view) {
         EditText userID = (EditText) findViewById(R.id.idEditText);
         EditText password = (EditText) findViewById(R.id.passwordEditText);
@@ -40,51 +42,22 @@ public class OwnerLoginActivity extends AppCompatActivity {
             password.setError("Please enter your password");
             return;
         }
-
-
-        /* Dummy Sign-in procedure - Used only for development purposes
-        *
-        * Signs in the user if: id = owner; password = owner123
-        *
-        * */
-
-        if(userID.getText().toString().trim().equals("owner")) {
-            if(password.getText().toString().trim().equals("owner123")) {
-                Toast.makeText(this, "Successfully logged in", Toast.LENGTH_SHORT).show();
-                QueryUtility queryUtility = QueryUtility.getInstance(getApplicationContext());
-                queryUtility.setSessionTable("owner", "owner123");
-                startActivity(new Intent(this, OwnerDashboardActivity.class));
-                finish();
-            } else {
-                password.setError("Incorrect password");
-            }
-        } else {
-            userID.setError("Incorrect ID");
-        }
+        Toast.makeText(this, "This action calls the sign-in method.", Toast.LENGTH_SHORT).show();
     }
 
     public void handleTroubleSigningIn(View view) {
-        new AlertDialog.Builder(this).setMessage("If you have forgotten your password, you can generate a new one using an OTP.\n\nIf you have forgotten your user ID, please contact the administrator.")
+        new AlertDialog.Builder(this).setMessage("Please contact the flat owner who has registered your tenant account for your login credentials.\n\nYou can request new ID from the owner if you want.")
                 .setTitle("Trouble signing in")
                 .setPositiveButton(
-                        "Forgot Password",
+                        "Request new ID",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(OwnerLoginActivity.this, "Assume that OTP is sent to your registered mobile number", Toast.LENGTH_LONG).show();
+                                Toast.makeText(TenantLoginActivity.this, "Request sent to your flat owner", Toast.LENGTH_SHORT).show();
                             }
                         }
                 )
                 .setNegativeButton(
-                        "Forgot ID",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(OwnerLoginActivity.this, "Please contact your administrator for help.", Toast.LENGTH_LONG).show();
-                            }
-                        }
-                )
-                .setNeutralButton(
                         "Cancel",
                         new DialogInterface.OnClickListener() {
                             @Override
@@ -93,7 +66,7 @@ public class OwnerLoginActivity extends AppCompatActivity {
                             }
                         }
                 ).setCancelable(false).create().show();
-    }
 
+    }
 }
 

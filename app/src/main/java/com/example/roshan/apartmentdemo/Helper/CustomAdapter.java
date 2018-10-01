@@ -1,0 +1,42 @@
+package com.example.roshan.apartmentdemo.Helper;
+
+import android.app.Activity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.example.roshan.apartmentdemo.R;
+
+public class CustomAdapter extends ArrayAdapter<String> {
+
+    private final Activity context;
+    private final String[] flatname;
+    private final String[] flatcity;
+    private final Integer[] imgid;
+
+    public CustomAdapter(Activity context, String[] itemname, Integer[] imgid,String[] flatcity) {
+        super(context, R.layout.custom, itemname);
+        this.context=context;
+        this.flatname=itemname;
+        this.flatcity=flatcity;
+        this.imgid=imgid;
+    }
+
+    public View getView(int position,View view,ViewGroup parent) {
+        LayoutInflater inflater=context.getLayoutInflater();
+        View rowView=inflater.inflate(R.layout.custom, null,true);
+
+        TextView txtTitle = (TextView) rowView.findViewById(R.id.flatname);
+        ImageView imageView = (ImageView) rowView.findViewById(R.id.imageview);
+        TextView extratxt = (TextView) rowView.findViewById(R.id.flatcity);
+
+        txtTitle.setText(flatname[position]);
+        imageView.setImageResource(imgid[position]);
+        extratxt.setText(flatcity[position]);
+        return rowView;
+
+    }
+}

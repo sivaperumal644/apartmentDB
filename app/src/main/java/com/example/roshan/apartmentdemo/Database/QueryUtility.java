@@ -1,4 +1,4 @@
-package com.example.roshan.apartmentdemo;
+package com.example.roshan.apartmentdemo.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,7 +9,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class QueryUtility extends SQLiteOpenHelper{
 
