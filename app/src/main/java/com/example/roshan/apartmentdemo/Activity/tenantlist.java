@@ -47,7 +47,8 @@ public class tenantlist extends AppCompatActivity {
         getSupportActionBar().setTitle("Your Tenent");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        setContentView(R.layout.activity_tenantlist);CustomAdapter adapter=new CustomAdapter(this, tenantname, imgid,flatname);
+        setContentView(R.layout.activity_tenantlist);
+        CustomAdapter adapter=new CustomAdapter(this, tenantname, imgid,flatname);
         list=(ListView)findViewById(R.id.list);
         list.setAdapter(adapter);
 

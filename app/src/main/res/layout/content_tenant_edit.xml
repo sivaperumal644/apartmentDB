@@ -101,9 +101,9 @@
 
             <Button
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
+                android:layout_marginLeft="10dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="50"
                 android:text="🔄" />
 
         </LinearLayout>
@@ -130,14 +130,13 @@
 
             <Button
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
+                android:layout_marginLeft="10dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="50"
                 android:text="🔄" />
 
         </LinearLayout>
 
-        <!-- TODO: Make both the 🔄 buttons evenly spaced. -->
 
 
     </LinearLayout>

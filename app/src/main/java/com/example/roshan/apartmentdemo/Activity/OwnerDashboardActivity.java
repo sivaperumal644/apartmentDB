@@ -18,6 +18,45 @@ import com.example.roshan.apartmentdemo.Helper.CustomAdapter;
 import com.example.roshan.apartmentdemo.R;
 
 public class OwnerDashboardActivity extends AppCompatActivity {
+    ListView list;
+    String[] itemname ={
+            "A Block",
+            "B Block ",
+            "C Block ",
+            "D Block ",
+            "E Block "
+    };
+    String[] flatcity ={
+            "coimbatore",
+            "Madurai",
+            "Chennai",
+            "Bangalore",
+            "Kerala"
+    };
+
+    Integer[] imgid={
+            R.drawable.person,
+            R.drawable.pn,
+            R.drawable.hai,
+            R.drawable.man,
+            R.drawable.model
+    };
+    String[] tenantname ={
+            "Sivaram",
+            "Vineesh",
+            "Sivaperumal",
+            "Roshan",
+            "Saravanan"
+    };
+    String[] flatname ={
+            "A Block",
+            "B Block ",
+            "C Block ",
+            "D Block ",
+            "E Block "
+    };
+
+
 
 
     QueryUtility myQuery;
@@ -52,6 +91,34 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_dashboard);
         getSupportActionBar().setTitle("Dashboard");
+        CustomAdapter adapter=new CustomAdapter(this, itemname, imgid,flatcity);
+        list=(ListView)findViewById(R.id.flatList);
+        list.setAdapter(adapter);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                String Slecteditem= itemname[+position];
+                Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        CustomAdapter adapter1=new CustomAdapter(this, tenantname, imgid,flatname);
+        list=(ListView)findViewById(R.id.tenantList);
+        list.setAdapter(adapter1);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                String Slecteditem= tenantname[+position];
+                Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
+
+            }
+        });
         GetDatabaseTask getDatabaseTask = new GetDatabaseTask();
         getDatabaseTask.execute();
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -89,6 +156,8 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         startActivity(new Intent(this, MainActivity.class));
         finish();
     }
+
+
 }
 
 
