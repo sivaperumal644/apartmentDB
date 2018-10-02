@@ -20,6 +20,8 @@ import com.example.roshan.apartmentdemo.R;
 public class OwnerDashboardActivity extends AppCompatActivity {
 
 
+    /* TODO: Create a menu in the action bar for "SAVE" - which will save the data entered */
+
     QueryUtility myQuery;
 
     public void flats(View view) {
