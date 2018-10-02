@@ -102,13 +102,8 @@
             <Button
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="50dp"
-<<<<<<< HEAD
                 android:layout_marginLeft="10dp"
                 android:layout_height="wrap_content"
-=======
-                android:layout_height="wrap_content"
-
->>>>>>> 9802e2db4999a208edc737c61071e7444ed3d3ec
                 android:text="🔄" />
 
         </LinearLayout>
@@ -118,7 +113,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="wrap_content"
@@ -129,7 +123,6 @@
                 android:layout_weight="1"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="8dp"/>
-
             <EditText
                 android:layout_width="match_parent"
                 android:layout_weight="200"
@@ -138,10 +131,7 @@
             <Button
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="50dp"
-<<<<<<< HEAD
                 android:layout_marginLeft="10dp"
-=======
->>>>>>> 9802e2db4999a208edc737c61071e7444ed3d3ec
                 android:layout_height="wrap_content"
                 android:text="🔄" />
 
