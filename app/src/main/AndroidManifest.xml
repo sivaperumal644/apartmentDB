@@ -23,9 +23,9 @@
         <activity android:name=".Activity.OwnerDashboardActivity" />
         <activity
             android:name=".Activity.TenantEditActivity"
+            android:theme="@style/AppTheme"
             android:label="@string/title_activity_tenant_edit"
-            android:parentActivityName=".Activity.OwnerDashboardActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:parentActivityName=".Activity.OwnerDashboardActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.roshan.apartmentdemo.Activity.OwnerDashboardActivity" />

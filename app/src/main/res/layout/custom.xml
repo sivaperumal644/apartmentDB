@@ -10,7 +10,6 @@
     android:foreground="?android:attr/selectableItemBackground"
     android:gravity="center"
     android:orientation="vertical"
-    card_view:cardCornerRadius="10dp"
     card_view:cardElevation="@dimen/cardview_default_elevation"
     android:layout_height="wrap_content">
 
@@ -27,49 +26,48 @@
         android:layout_height="80dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="5dp"
+        android:layout_margin="4dp"
         android:src="@drawable/download"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="13dp" />
+        android:layout_marginLeft="8dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_marginStart="120dp"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:gravity="center_vertical|fill"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/flatname"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:textStyle="bold"
-        android:textColor="#000"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="24dp"
-        android:layout_alignParentRight="true" />
+            <TextView
+                android:id="@+id/flatname"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="8dp"
+                android:text="Avengers Tower"
+                android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title" />
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginTop="20dp"
-                    android:src="@drawable/ic_location_on_black_24dp"
-                    />
-            <TextView
-                android:id="@+id/flatcity"
-                android:layout_width="250dp"
-                android:layout_marginStart="5dp"
-                android:textStyle="bold"
-                android:layout_marginTop="20dp"
-                android:textColor="#000"
-                android:layout_height="wrap_content"
-                />
+                    android:src="@drawable/ic_location_on_black_24dp" />
+
+                <TextView
+                    android:id="@+id/flatcity"
+                    android:layout_width="250dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="20dp"
+                    android:text="New York"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored" />
             </LinearLayout>
         </LinearLayout>
 

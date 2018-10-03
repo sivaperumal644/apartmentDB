@@ -1,11 +1,13 @@
 package com.example.roshan.apartmentdemo.Activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -94,7 +96,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_owner_dashboard);
         getSupportActionBar().setTitle("Dashboard");
         CustomAdapter adapter=new CustomAdapter(this, itemname, imgid,flatcity);
-        list=(ListView)findViewById(R.id.flatList);
+        list = findViewById(R.id.flatList);
         list.setAdapter(adapter);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -108,7 +110,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
             }
         });
         CustomAdapter adapter1=new CustomAdapter(this, tenantname, imgid,flatname);
-        list=(ListView)findViewById(R.id.tenantList);
+        list = findViewById(R.id.tenantList);
         list.setAdapter(adapter1);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -123,13 +125,31 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         });
         GetDatabaseTask getDatabaseTask = new GetDatabaseTask();
         getDatabaseTask.execute();
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            fab.setTooltipText("Add new entry");
+        }
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Dude here is the fab action
 
-                Toast.makeText(OwnerDashboardActivity.this,"FAB clicked",Toast.LENGTH_LONG).show();
+
+                new AlertDialog.Builder(getApplicationContext()).setTitle("Add new entry").setMessage("Please choose if you wish to add a new flat or a tenant").setPositiveButton("ADD NEW FLAT", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Intent to Add Flat Activity
+                    }
+                }).setNeutralButton("Add new Tenant", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startActivity(new Intent(getApplicationContext(), TenantEditActivity.class));
+                    }
+                }).setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                }).setCancelable(true).create().show();
 
             }
         });

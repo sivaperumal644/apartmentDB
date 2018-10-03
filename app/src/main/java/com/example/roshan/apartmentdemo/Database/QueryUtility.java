@@ -24,6 +24,16 @@ public class QueryUtility extends SQLiteOpenHelper{
     String CREATE_SESSION_TABLE_QUERY = "CREATE TABLE " + SESSION_TABLE + " (userID text, password text)";
     String CREATE_TENANT_TABLE_QUERY = "CREATE TABLE " + TENANTS_TABLE + " (id text PRIMARY KEY, name text, flat text, FOREIGNKEY flat references flats(name), contact text, email text, password text, rent int, charges int, image blob)";
 
+    /* Populating database with some data */
+
+    public void fakePopulateDatabase() {
+        String[] flatNames = {"Sunshine Colony", "City Avenue", "Ganapathy Nagar", "Firefly Estates"};
+        String[] flatCities = {"Chennai", "Coimbatore", "Bengaluru", "Mumbai"};
+        String[] flatAddress = {"Residential Complex", "Gandhipuram", "Green Colony", "Sea-link Bridge"};
+        String[] tenantNames = {"Vineesh VK", "Gnaneshwar GS", "Sivaram S", "Sivaperumal K"};
+        String[] tenantFlats = {"Sunshine Colony", "City Avenue", "Ganapathy Nagar", "Firefly Estates"};
+
+    }
 
     private static QueryUtility instance;
 
@@ -80,6 +90,7 @@ public class QueryUtility extends SQLiteOpenHelper{
         db.endTransaction();
         db.close();
     }
+
 
     public ArrayList<String> getTenantNames(String tenantID) {
         Cursor cursor;
