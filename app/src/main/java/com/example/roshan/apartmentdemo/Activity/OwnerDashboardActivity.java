@@ -102,6 +102,9 @@ public class OwnerDashboardActivity extends AppCompatActivity {
                                     int position, long id) {
                 String Slecteditem= itemname[+position];
                 Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
+                /* TODO: Must create item select functionality for both lists tenant and flat, so that when user selects an item, something happens.
+                For now just implement a toast.
+                 */
 
             }
         });
