@@ -144,5 +144,22 @@ public class QueryUtility extends SQLiteOpenHelper{
     }
 
 
-
+    public void insertTenant(String tenantId, String tenantName, String tenantFlatSelection, String tenantContact, String tenantEmail, String tenantPassword, int tenantRent, int tenantCharges, byte[] avatarBlob) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues tenantValues = new ContentValues();
+        tenantValues.put("_id", tenantId);
+        tenantValues.put("name", tenantName);
+        tenantValues.put("flat", tenantFlatSelection);
+        tenantValues.put("contact", tenantContact);
+        tenantValues.put("email", tenantEmail);
+        tenantValues.put("password", tenantPassword);
+        tenantValues.put("rent", tenantRent);
+        tenantValues.put("charges", tenantCharges);
+        tenantValues.put("image", avatarBlob);
+        db.beginTransaction();
+        db.insert(TENANTS_TABLE, null,tenantValues);
+        db.setTransactionSuccessful();
+        db.endTransaction();
+        db.close();
+    }
 }

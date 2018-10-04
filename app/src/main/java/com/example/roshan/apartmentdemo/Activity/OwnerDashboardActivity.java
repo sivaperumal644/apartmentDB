@@ -136,6 +136,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 startActivity(new Intent(OwnerDashboardActivity.this, EditTenantDetails.class));
+                                finish();
                             }
                         })
                         .setNeutralButton("Add new Flat", new DialogInterface.OnClickListener() {

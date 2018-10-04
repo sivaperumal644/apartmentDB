@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.example.roshan.apartmentdemo.Database.QueryUtility;
 import com.example.roshan.apartmentdemo.R;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -35,6 +36,7 @@ public class EditTenantDetails extends AppCompatActivity {
     ArrayList<String> flatNameList;
     Cursor flatDataCursor;
     Spinner flatChoiceSpinner;
+
     private int PICK_IMAGE_REQUEST = 1;
 
     public void getImageFromUser(View view) {
@@ -128,11 +130,81 @@ public class EditTenantDetails extends AppCompatActivity {
     // handle button activities
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         int id = item.getItemId();
 
         if (id == R.id.saveButton) {
             // This should handle SAVE action
-            /* TODO: For Roshan: This will perform save */
+            String tenantName, tenantContact, tenantEmail, tenantId, tenantPassword, tenantFlat;
+            int tenantRent, tenantCharges;
+            EditText tenantNameField = findViewById(R.id.editTenantName);
+            EditText tenantContactField = findViewById(R.id.editTenantContact);
+            EditText tenantEmailField = findViewById(R.id.editTenantEmail);
+            EditText tenantIdField = findViewById(R.id.editTenantId);
+            EditText tenantPasswordField = findViewById(R.id.editPassword);
+            Spinner tenantFlatField = findViewById(R.id.flatSpinner);
+            String tenantFlatSelection = tenantFlatField.getSelectedItem().toString();
+            EditText tenantRentField = findViewById(R.id.editTenantRent);
+            EditText tenantChargesField = findViewById(R.id.editTenantCharges);
+            ImageView editTenantAvatar = findViewById(R.id.editTenantAvatar);
+            editTenantAvatar.setDrawingCacheEnabled(true);
+            editTenantAvatar.buildDrawingCache();
+            Bitmap bitmapAvatar = Bitmap.createBitmap(editTenantAvatar.getDrawingCache());
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            bitmapAvatar.compress(Bitmap.CompressFormat.PNG, 100, bos);
+            byte[] avatarBlob = bos.toByteArray();
+            if(tenantNameField.getText().toString().isEmpty()) {
+                tenantNameField.setError("Please enter tenant name");
+                tenantNameField.requestFocus();
+                return false;
+            }
+            if(tenantContactField.getText().toString().isEmpty()) {
+                tenantContactField.setError("Please enter tenant contact");
+                tenantContactField.requestFocus();
+                return false;
+            }
+            if(tenantEmailField.getText().toString().isEmpty()) {
+                tenantEmailField.setError("Please enter tenant email");
+                tenantEmailField.requestFocus();
+                return false;
+            }
+            if(tenantIdField.getText().toString().isEmpty()) {
+                tenantIdField.setError("Please enter tenant id");
+                tenantIdField.requestFocus();
+                return false;
+            }
+            if(tenantPasswordField.getText().toString().isEmpty()) {
+                tenantPasswordField.setError("Please enter tenant password");
+                tenantPasswordField.requestFocus();
+                return false;
+            }
+            if(tenantRentField.getText().toString().isEmpty()) {
+                tenantRentField.setError("Please enter tenant rent");
+                tenantRentField.requestFocus();
+                return false;
+            }
+            if(tenantChargesField.getText().toString().isEmpty()) {
+                tenantChargesField.setError("Please enter tenant charges");
+                tenantChargesField.requestFocus();
+                return false;
+            }
+            tenantName = tenantNameField.getText().toString().trim();
+            tenantContact = tenantContactField.getText().toString().trim();
+            tenantEmail = tenantEmailField.getText().toString().trim();
+            tenantPassword = tenantPasswordField.getText().toString().trim();
+            tenantRent = Integer.parseInt(tenantRentField.getText().toString().trim());
+            tenantCharges = Integer.parseInt(tenantChargesField.getText().toString().trim());
+            tenantId = tenantIdField.getText().toString().trim();
+
+
+
+            myQuery.insertTenant(tenantId, tenantName, tenantFlatSelection, tenantContact, tenantEmail, tenantPassword, tenantRent, tenantCharges, avatarBlob);
+
+            Toast.makeText(this, "Successfully inserted new tenant", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, OwnerDashboardActivity.class));
+            //S (_id text PRIMARY KEY, name text, flat text, FOREIGNKEY flat references flats(name), contact text, email text, password text, rent int, charges int, image blob)";
+
+
         }
         return super.onOptionsItemSelected(item);
     }
