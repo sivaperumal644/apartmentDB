@@ -1,19 +1,122 @@
 package com.example.roshan.apartmentdemo.Activity;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.example.roshan.apartmentdemo.Database.QueryUtility;
 import com.example.roshan.apartmentdemo.R;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 public class EditTenantDetails extends AppCompatActivity {
+
+    String[] randomList = {"AZ", "Z3", "4R", "K2", "FU", "7E", "3T", "5Z", "SX", "XS", "AA", "JF"};
+
+    public static int getRandom() {
+        return (int)(Math.ceil(Math.random() * 10));
+    }
+
+    ImageView avatar;
+    ArrayList<String> flatNameList;
+    Cursor flatDataCursor;
+    Spinner flatChoiceSpinner;
+    private int PICK_IMAGE_REQUEST = 1;
+
+    public void getImageFromUser(View view) {
+        Intent intent = new Intent();
+// Show only images, no videos or anything else
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+// Always show the chooser (if there are multiple options available)
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+
+            Uri uri = data.getData();
+
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                ImageView tenantAvatar = (ImageView) findViewById(R.id.editTenantAvatar);
+                tenantAvatar.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void generateID(View view) {
+        EditText idField = findViewById(R.id.editTenantId);
+        EditText editTenantNameField = findViewById(R.id.editTenantName);
+        String name = editTenantNameField.getText().toString();
+        if(name.isEmpty()) {
+            idField.setText("tenant" + getRandom() + getRandom());
+        } else {
+            idField.setText(name.replaceAll("\\s","") + getRandom() + getRandom());
+        }
+    }
+
+    public void generatePassword(View view) {
+        EditText passwordField = findViewById(R.id.editPassword);
+        String password = randomList[getRandom()] + randomList[getRandom()] + randomList[getRandom()];
+        passwordField.setText(password);
+    }
+
+
+    private class GetDatabaseTask extends AsyncTask<Void, Void, QueryUtility> {
+
+        @Override
+        protected QueryUtility doInBackground(Void... voids) {
+            return QueryUtility.getInstance(getApplicationContext());
+        }
+
+        @Override
+        protected void onPostExecute(QueryUtility queryUtility) {
+            myQuery = queryUtility;
+            flatNameList = new ArrayList<>();
+            flatDataCursor = myQuery.getFlatData(null);
+            flatDataCursor.moveToFirst();
+            while(!flatDataCursor.isAfterLast()) {
+                flatNameList.add(flatDataCursor.getString(flatDataCursor.getColumnIndexOrThrow("name")));
+                flatDataCursor.moveToNext();
+            }
+            flatChoiceSpinner = findViewById(R.id.flatSpinner);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(EditTenantDetails.this, android.R.layout.simple_spinner_item, flatNameList);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            flatChoiceSpinner.setAdapter(adapter);
+        }
+    }
+
+    QueryUtility myQuery;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_tenant_details);
         getSupportActionBar().setTitle("Edit Tenant Details");
+        avatar = findViewById(R.id.editTenantAvatar);
+        avatar.setImageDrawable(getDrawable(R.drawable.man));
+        GetDatabaseTask getDatabaseTask = new GetDatabaseTask();
+        getDatabaseTask.execute();
     }
 
     @Override

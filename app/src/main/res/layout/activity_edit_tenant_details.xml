@@ -21,7 +21,7 @@
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/editTenantAvatar"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_gravity="center_horizontal"
@@ -34,6 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:onClick="getImageFromUser"
             android:text="Select Picture" />
 
         <EditText
@@ -42,6 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:hint="Tenant Name"
+            android:id="@+id/editTenantName"
             android:padding="8dp" />
 
         <EditText
@@ -78,6 +80,7 @@
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/flatSpinner"
                 android:layout_weight="3"></Spinner>
 
         </LinearLayout>
@@ -102,13 +105,14 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/editTenantId"
                 android:layout_weight="200" />
 
             <Button
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-
+android:onClick="generateID"
                 android:text="🔄" />
 
         </LinearLayout>
@@ -134,13 +138,15 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/editPassword"
                 android:layout_weight="200" />
 
             <Button
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:text="🔄" />
+                android:text="🔄"
+                android:onClick="generatePassword"/>
 
         </LinearLayout>
 
@@ -150,6 +156,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:hint="Rent"
+            android:inputType="number"
             android:padding="8dp" />
 
         <EditText
@@ -158,6 +165,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:hint="Charges"
+            android:inputType="number"
             android:padding="8dp" />
 
 
