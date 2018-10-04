@@ -61,7 +61,6 @@ public class OwnerDashboardActivity extends AppCompatActivity {
 
 
 
-    /* TODO: Create a menu in the action bar for "SAVE" - which will save the data entered */
 
     QueryUtility myQuery;
 
@@ -134,7 +133,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                new AlertDialog.Builder(getApplicationContext()).setTitle("Add new entry").setMessage("Please choose if you wish to add a new flat or a tenant").setPositiveButton("ADD NEW FLAT", new DialogInterface.OnClickListener() {
+                new AlertDialog.Builder(OwnerDashboardActivity.this).setTitle("Add new entry").setMessage("Please choose if you wish to add a new flat or a tenant").setPositiveButton("ADD NEW FLAT", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //Intent to Add Flat Activity

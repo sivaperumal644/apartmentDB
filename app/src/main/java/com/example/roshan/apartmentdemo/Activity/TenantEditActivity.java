@@ -38,6 +38,5 @@ public class TenantEditActivity extends AppCompatActivity {
     }
 }
 
-/* TODO: !IMPORTANT! The app crashes on starting this activity. !IMPORTANT! */
 
 /* TODO: Need to implement an option in the action bar, saying "SAVE" which should call the "save" function */

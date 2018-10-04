@@ -8,6 +8,12 @@
         android:title="Log Out"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/save"
+        android:orderInCategory="100"
+        android:title="Save"
+        app:showAsAction="never" />
+
 
 </menu>
 
