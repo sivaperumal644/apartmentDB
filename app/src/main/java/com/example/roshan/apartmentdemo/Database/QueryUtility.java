@@ -5,10 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import com.example.roshan.apartmentdemo.R;
+
+import java.io.ByteArrayOutputStream;
 
 public class QueryUtility extends SQLiteOpenHelper{
 
@@ -20,20 +23,10 @@ public class QueryUtility extends SQLiteOpenHelper{
     private final static int DATABASE_VERSION = 1;
     private Context context;
 
-    String CREATE_FLAT_TABLE_QUERY = "CREATE TABLE " + FLATS_TABLE + " (name text, address text, city text, image blob)";
+    String CREATE_FLAT_TABLE_QUERY = "CREATE TABLE " + FLATS_TABLE + " (_id int PRIMARY KEY, name text, address text, city text, image blob)";
     String CREATE_SESSION_TABLE_QUERY = "CREATE TABLE " + SESSION_TABLE + " (userID text, password text)";
-    String CREATE_TENANT_TABLE_QUERY = "CREATE TABLE " + TENANTS_TABLE + " (id text PRIMARY KEY, name text, flat text, FOREIGNKEY flat references flats(name), contact text, email text, password text, rent int, charges int, image blob)";
+    String CREATE_TENANT_TABLE_QUERY = "CREATE TABLE " + TENANTS_TABLE + " (_id text PRIMARY KEY, name text, flat text, FOREIGNKEY flat references flats(name), contact text, email text, password text, rent int, charges int, image blob)";
 
-    /* Populating database with some data */
-
-    public void fakePopulateDatabase() {
-        String[] flatNames = {"Sunshine Colony", "City Avenue", "Ganapathy Nagar", "Firefly Estates"};
-        String[] flatCities = {"Chennai", "Coimbatore", "Bengaluru", "Mumbai"};
-        String[] flatAddress = {"Residential Complex", "Gandhipuram", "Green Colony", "Sea-link Bridge"};
-        String[] tenantNames = {"Vineesh VK", "Gnaneshwar GS", "Sivaram S", "Sivaperumal K"};
-        String[] tenantFlats = {"Sunshine Colony", "City Avenue", "Ganapathy Nagar", "Firefly Estates"};
-
-    }
 
     private static QueryUtility instance;
 
@@ -54,11 +47,49 @@ public class QueryUtility extends SQLiteOpenHelper{
         db.execSQL(CREATE_FLAT_TABLE_QUERY);
         db.execSQL(CREATE_TENANT_TABLE_QUERY);
         db.execSQL(CREATE_SESSION_TABLE_QUERY);
+        db.beginTransaction();
         ContentValues sessionValues = new ContentValues();
         sessionValues.put("userID", "null");
         sessionValues.put("password", "null");
         db.insert(SESSION_TABLE, null, sessionValues);
+        String[] flatNames = {"Sunshine Colony", "City Avenue", "Ganapathy Nagar", "Firefly Estates"};
+        String[] flatCities = {"Chennai", "Coimbatore", "Bengaluru", "Mumbai"};
+        String[] flatAddress = {"Residential Complex", "Gandhipuram", "Green Colony", "Sea-link Bridge"};
+        String[] tenantNames = {"Vineesh VK", "Gnaneshwar GS", "Sivaram S", "Sivaperumal K"};
+        String[] tenantFlats = {"Sunshine Colony", "City Avenue", "Ganapathy Nagar", "Firefly Estates"};
+        String[] tenantIds = {"vin27", "gnags", "siva", "sivaperumal"};
+        String[] tenantEmails = {"vineesh@tenant.com", "gnaneshwar@tenant.com", "sivaram@tenant.com", "siva03@tenant.com"};
+        Bitmap avatar = BitmapFactory.decodeResource(context.getResources(), R.drawable.model);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        avatar.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] avatarBlob = byteArrayOutputStream.toByteArray();
+        Bitmap flatImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.flat);
+        byteArrayOutputStream = new ByteArrayOutputStream();
+        flatImage.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] flatImageBlob = byteArrayOutputStream.toByteArray();
+        for (int i = 0; i < 4; i++) {
+            ContentValues tenantValues = new ContentValues();
+            tenantValues.put("_id", tenantIds[i]);
+            tenantValues.put("name", tenantNames[i]);
+            tenantValues.put("flat", tenantFlats[i]);
+            tenantValues.put("contact", "9674281235");
+            tenantValues.put("email", tenantEmails[i]);
+            tenantValues.put("password", tenantIds[i]);
+            tenantValues.put("rent", 13000);
+            tenantValues.put("charges", 3500);
+            tenantValues.put("image", avatarBlob);
+            db.insert(TENANTS_TABLE, null, tenantValues);
+            ContentValues flatValues = new ContentValues();
+            flatValues.put("_id", i);
+            flatValues.put("name", flatNames[i]);
+            flatValues.put("city", flatCities[i]);
+            flatValues.put("address", flatAddress[i]);
+            flatValues.put("image", flatImageBlob);
+            db.insert(FLATS_TABLE, null, flatValues);
+        }
         Toast.makeText(context, "Created new Database", Toast.LENGTH_SHORT).show();
+        db.setTransactionSuccessful();
+        db.endTransaction();
     }
 
     @Override
@@ -92,23 +123,24 @@ public class QueryUtility extends SQLiteOpenHelper{
     }
 
 
-    public ArrayList<String> getTenantNames(String tenantID) {
+    public Cursor getTenantData(String tenantID) {
         Cursor cursor;
         if(tenantID == null) {
-             cursor = getReadableDatabase().rawQuery("SELECT name from tenants", null);
+            cursor = getReadableDatabase().rawQuery("SELECT * from tenants", null);
         } else {
-             cursor = getReadableDatabase().rawQuery("SELECT name from tenants WHERE id = '" + tenantID + "';", null);
+            cursor = getReadableDatabase().rawQuery("SELECT * from tenants WHERE id = '" + tenantID + "';", null);
         }
-        ArrayList<String> nameList = new ArrayList<String>();
-        cursor.moveToFirst();
-        while(cursor.isAfterLast() == false) {
-            nameList.add(cursor.getString(0));
-            cursor.moveToNext();
+        return cursor;
+    }
+
+    public Cursor getFlatData(String flatName) {
+        Cursor cursor;
+        if (flatName == null) {
+            cursor = getReadableDatabase().rawQuery("SELECT * from flats", null);
+        } else {
+            cursor = getReadableDatabase().rawQuery("SELECT * from flats WHERE name = '" + flatName + "';", null);
         }
-        for(String name : nameList) {
-            Log.i("NAMES", name);
-        }
-        return nameList;
+        return cursor;
     }
 
 

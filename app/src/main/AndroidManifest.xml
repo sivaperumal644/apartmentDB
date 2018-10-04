@@ -23,15 +23,16 @@
         <activity android:name=".Activity.OwnerDashboardActivity" />
         <activity
             android:name=".Activity.TenantEditActivity"
-            android:theme="@style/AppTheme"
             android:label="@string/title_activity_tenant_edit"
-            android:parentActivityName=".Activity.OwnerDashboardActivity">
+            android:parentActivityName=".Activity.OwnerDashboardActivity"
+            android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.roshan.apartmentdemo.Activity.OwnerDashboardActivity" />
         </activity>
         <activity android:name=".Activity.flatlist" />
-        <activity android:name=".Activity.tenantlist"></activity>
+        <activity android:name=".Activity.tenantlist" />
+        <activity android:name=".Activity.EditTenantDetails"></activity>
     </application>
 
 </manifest>

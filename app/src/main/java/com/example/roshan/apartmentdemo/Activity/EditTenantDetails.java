@@ -7,16 +7,13 @@ import android.view.MenuItem;
 
 import com.example.roshan.apartmentdemo.R;
 
-public class TenantEditActivity extends AppCompatActivity {
+public class EditTenantDetails extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tenant_edit);
+        setContentView(R.layout.activity_edit_tenant_details);
         getSupportActionBar().setTitle("Edit Tenant Details");
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -36,7 +33,6 @@ public class TenantEditActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
 
-
-/* TODO: Need to implement an option in the action bar, saying "SAVE" which should call the "save" function */

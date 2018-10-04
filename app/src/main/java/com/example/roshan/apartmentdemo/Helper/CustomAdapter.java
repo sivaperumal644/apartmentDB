@@ -29,9 +29,9 @@ public class CustomAdapter extends ArrayAdapter<String> {
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.custom, null,true);
 
-        TextView txtTitle = (TextView) rowView.findViewById(R.id.flatname);
-        ImageView imageView = (ImageView) rowView.findViewById(R.id.imageview);
-        TextView extratxt = (TextView) rowView.findViewById(R.id.flatcity);
+        TextView txtTitle = rowView.findViewById(R.id.name);
+        ImageView imageView = rowView.findViewById(R.id.image);
+        TextView extratxt = rowView.findViewById(R.id.city);
 
         txtTitle.setText(flatname[position]);
         imageView.setImageResource(imgid[position]);

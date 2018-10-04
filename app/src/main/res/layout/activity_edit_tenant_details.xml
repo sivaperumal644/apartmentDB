@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:paddingBottom="16dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="16dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -64,19 +65,20 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Select Flat: "
-                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                android:textAllCaps="true"
                 android:layout_gravity="center_vertical"
-                android:layout_marginRight="8dp"/>
+                android:layout_marginRight="8dp"
+                android:text="Select Flat: "
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
             <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="3">
-            </Spinner>
+                android:layout_weight="3"></Spinner>
 
         </LinearLayout>
 
@@ -86,19 +88,21 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Generate ID: "
-                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                android:textAllCaps="true"
-                android:layout_weight="1"
                 android:layout_gravity="center_vertical"
-                android:layout_marginRight="8dp"/>
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:text="Generate ID: "
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
             <EditText
                 android:layout_width="match_parent"
-                android:layout_weight="200"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_weight="200" />
 
             <Button
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
@@ -116,20 +120,21 @@
             android:layout_marginRight="16dp"
 
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Generate Password: "
-                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-                android:textAllCaps="true"
-                android:layout_weight="1"
                 android:layout_gravity="center_vertical"
-                android:layout_marginRight="8dp"/>
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:text="Generate Password: "
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_weight="200"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_weight="200" />
 
             <Button
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
@@ -158,4 +163,3 @@
 
     </LinearLayout>
 </ScrollView>
-
