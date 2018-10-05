@@ -1,3 +1,5 @@
+//TODO: Can we turn this into a tabbed one, instead of the current arrangement?
+
 package com.example.roshan.apartmentdemo.Activity;
 
 import android.content.Context;
