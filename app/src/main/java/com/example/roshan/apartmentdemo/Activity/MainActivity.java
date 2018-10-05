@@ -50,13 +50,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void autoSignIn() {
 
-        if(myQuery.getSession() == (null)) {
+        if(myQuery.getSession() == null) {
             return;
         }
         if(myQuery.getSession().equals("owner")) {
             startActivity(new Intent(this, OwnerDashboardActivity.class));
             finish();
         }
+
     }
 
 

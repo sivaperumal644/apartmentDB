@@ -1,6 +1,7 @@
 package com.example.roshan.apartmentdemo.Activity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.roshan.apartmentdemo.Database.QueryUtility;
 import com.example.roshan.apartmentdemo.R;
 
 public class TenantLoginActivity extends AppCompatActivity {
@@ -42,7 +44,16 @@ public class TenantLoginActivity extends AppCompatActivity {
             password.setError("Please enter your password");
             return;
         }
-        Toast.makeText(this, "This action calls the sign-in method.", Toast.LENGTH_SHORT).show();
+        if(QueryUtility.getInstance(this).allowPassage(userID.getText().toString().trim(), password.getText().toString().trim())) {
+            Intent tenantIntent = new Intent(TenantLoginActivity.this, TenantView.class);
+            QueryUtility queryUtility = QueryUtility.getInstance(getApplicationContext());
+            tenantIntent.putExtra("tenantID", userID.getText().toString().trim());
+            tenantIntent.putExtra("isOwner", false);
+            startActivity(tenantIntent);
+        } else {
+            Toast.makeText(this, "Oops, try again!", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void handleTroubleSigningIn(View view) {

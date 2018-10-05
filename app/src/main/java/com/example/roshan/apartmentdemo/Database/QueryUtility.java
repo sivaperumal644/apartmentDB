@@ -129,7 +129,7 @@ public class QueryUtility extends SQLiteOpenHelper{
         if(tenantID == null) {
             cursor = getReadableDatabase().rawQuery("SELECT * from tenants", null);
         } else {
-            cursor = getReadableDatabase().rawQuery("SELECT * from tenants WHERE id = '" + tenantID + "';", null);
+            cursor = getReadableDatabase().rawQuery("SELECT * from tenants WHERE _id = '" + tenantID + "';", null);
         }
         return cursor;
     }
@@ -177,5 +177,40 @@ public class QueryUtility extends SQLiteOpenHelper{
         db.setTransactionSuccessful();
         db.endTransaction();
         db.close();
+    }
+
+    public void addNewContact(String contact, String id) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        Cursor cursor = getReadableDatabase().rawQuery("SELECT contact FROM tenants WHERE _id = " + "'" + id + "'", null);
+        cursor.moveToLast();
+        contact = contact + "\n" + cursor.getString(cursor.getColumnIndexOrThrow("contact"));
+        db.beginTransaction();
+        contentValues.put("contact", contact);
+        String selection = "_id = ?";
+        String[] selectionArgs = { "" + id };
+        db.update(TENANTS_TABLE, contentValues, selection,
+                selectionArgs);
+        db.setTransactionSuccessful();
+        db.endTransaction();
+        db.close();
+    }
+
+
+
+    public boolean allowPassage(String id, String pass) {
+        try {
+            SQLiteDatabase db = getReadableDatabase();
+            Cursor cursor = db.rawQuery("SELECT password FROM " + TENANTS_TABLE + " WHERE _id = '" + id + "';", null);
+            cursor.moveToLast();
+            String truePassword = cursor.getString(cursor.getColumnIndexOrThrow("password"));
+            if (pass.equals(truePassword)) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch(Exception e) {
+            return false;
+        }
     }
 }

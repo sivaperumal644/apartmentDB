@@ -24,7 +24,8 @@
         <activity android:name=".Activity.flatlist" />
         <activity android:name=".Activity.tenantlist" />
         <activity android:name=".Activity.EditTenantDetails" />
-        <activity android:name=".Activity.EditFlatDetails"></activity>
+        <activity android:name=".Activity.EditFlatDetails" />
+        <activity android:name=".Activity.TenantView"></activity>
     </application>
 
 </manifest>
