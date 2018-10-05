@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.strictmode.SqliteObjectLeakedViolation;
 import android.widget.Toast;
 
 import com.example.roshan.apartmentdemo.R;
@@ -158,6 +159,21 @@ public class QueryUtility extends SQLiteOpenHelper{
         tenantValues.put("image", avatarBlob);
         db.beginTransaction();
         db.insert(TENANTS_TABLE, null,tenantValues);
+        db.setTransactionSuccessful();
+        db.endTransaction();
+        db.close();
+    }
+
+    public void insertFlat(int flatId, String flatName, String flatAddress, String flatCity, byte[] avatarBlob) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues flatValues = new ContentValues();
+        flatValues.put("_id", flatId);
+        flatValues.put("name", flatName);
+        flatValues.put("address", flatAddress);
+        flatValues.put("city", flatCity);
+        flatValues.put("image", avatarBlob);
+        db.beginTransaction();
+        db.insert(FLATS_TABLE, null, flatValues);
         db.setTransactionSuccessful();
         db.endTransaction();
         db.close();

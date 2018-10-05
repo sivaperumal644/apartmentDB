@@ -28,6 +28,8 @@ import com.example.roshan.apartmentdemo.Database.QueryUtility;
 import com.example.roshan.apartmentdemo.Helper.CustomAdapter;
 import com.example.roshan.apartmentdemo.R;
 
+import java.security.acl.Owner;
+
 public class OwnerDashboardActivity extends AppCompatActivity {
     ListView list, flatListView;
     TenantCursorAdapter tenantCursorAdapter;
@@ -142,14 +144,14 @@ public class OwnerDashboardActivity extends AppCompatActivity {
                                 finish();
                             }
                         })
-                        .setNeutralButton("Add new Flat", new DialogInterface.OnClickListener() {
+                        .setNegativeButton("Add new Flat", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                //Intent to Flat Edit activity
-
+                                startActivity(new Intent(OwnerDashboardActivity.this, EditFlatDetails.class));
+                                finish();
                             }
                         })
-                        .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        .setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();
