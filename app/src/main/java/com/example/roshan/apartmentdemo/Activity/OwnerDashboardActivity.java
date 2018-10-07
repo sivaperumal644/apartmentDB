@@ -1,5 +1,3 @@
-//TODO: Can we turn this into a tabbed one, instead of the current arrangement?
-
 package com.example.roshan.apartmentdemo.Activity;
 
 import android.content.Context;
@@ -36,42 +34,8 @@ public class OwnerDashboardActivity extends AppCompatActivity {
     ListView list, flatListView;
     TenantCursorAdapter tenantCursorAdapter;
     FlatCursorAdapter flatCursorAdapter;
-    String[] itemname ={
-            "A Block",
-            "B Block ",
-            "C Block ",
-            "D Block ",
-            "E Block "
-    };
-    String[] flatcity ={
-            "coimbatore",
-            "Madurai",
-            "Chennai",
-            "Bangalore",
-            "Kerala"
-    };
-
-    Integer[] imgid={
-            R.drawable.person,
-            R.drawable.pn,
-            R.drawable.hai,
-            R.drawable.man,
-            R.drawable.model
-    };
-    String[] tenantname ={
-            "Sivaram",
-            "Vineesh",
-            "Sivaperumal",
-            "Roshan",
-            "Saravanan"
-    };
-    String[] flatname ={
-            "A Block",
-            "B Block ",
-            "C Block ",
-            "D Block ",
-            "E Block "
-    };
+    String[] flatNames = {"Sunshine Colony", "City Avenue", "Ganapathy Nagar", "Firefly Estates"};
+    String[] tenantNames = {"Vineesh VK", "Gnaneshwar GS", "Sivaram S", "Sivaperumal K"};
 
 
 
@@ -95,7 +59,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_dashboard);
         getSupportActionBar().setTitle("Dashboard");
-        CustomAdapter adapter=new CustomAdapter(this, itemname, imgid,flatcity);
+        /*CustomAdapter adapter=new CustomAdapter(this, itemname, imgid,flatcity);
         list = findViewById(R.id.flatList);
         list.setAdapter(adapter);
 
@@ -107,12 +71,11 @@ public class OwnerDashboardActivity extends AppCompatActivity {
                 String Slecteditem= itemname[+position];
                 Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
                 
-                /* TODO: Must create item select functionality for both lists tenant and flat, so that when user selects an item, something happens.
                 For now just implement a toast.
-                 */
+                 *//*
 
             }
-        });
+        });*/
 //        CustomAdapter adapter1=new CustomAdapter(this, tenantname, imgid,flatname);
 //        list = findViewById(R.id.tenantList);
 //        list.setAdapter(adapter1);
@@ -175,7 +138,7 @@ public class OwnerDashboardActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(QueryUtility queryUtility) {
             myQuery = queryUtility;
-            Cursor tenantDataCursor = myQuery.getTenantData(null);
+            final Cursor tenantDataCursor = myQuery.getTenantData(null);
             Cursor flatDataCursor = myQuery.getFlatData(null);
             list = findViewById(R.id.tenantList);
             tenantCursorAdapter = new TenantCursorAdapter(OwnerDashboardActivity.this, tenantDataCursor);
@@ -183,6 +146,24 @@ public class OwnerDashboardActivity extends AppCompatActivity {
             flatListView = findViewById(R.id.flatList);
             flatCursorAdapter = new FlatCursorAdapter(OwnerDashboardActivity.this, flatDataCursor);
             flatListView.setAdapter(flatCursorAdapter);
+            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    //listener for tenant list
+                    String Slecteditem=tenantNames[+i];
+                    Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
+
+                }
+            });
+            flatListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    //listener for flat list
+                    String Slecteditem=flatNames[+i];
+                    Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
+                }
+            });
+
 
         }
     }

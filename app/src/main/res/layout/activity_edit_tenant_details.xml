@@ -92,7 +92,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/flatSpinner"
                 android:spinnerMode="dropdown"
-                android:layout_weight="3"></Spinner>
+                android:layout_weight="3">
+
+            </Spinner>
 
         </LinearLayout>
 
