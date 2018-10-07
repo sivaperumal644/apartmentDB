@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Apartment Demo</string>
     <string name="title_activity_tenant_edit">TenantEditActivity</string>
+    <string name="developed"><![CDATA[Uses SQLite Database for storing data.\nDeveloped by Roshan & Sivaram]]></string>
 </resources>

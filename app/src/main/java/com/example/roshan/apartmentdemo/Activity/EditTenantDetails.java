@@ -58,7 +58,7 @@ public class EditTenantDetails extends AppCompatActivity {
 
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                ImageView tenantAvatar = (ImageView) findViewById(R.id.editTenantAvatar);
+                ImageView tenantAvatar = findViewById(R.id.editTenantAvatar);
                 tenantAvatar.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -119,6 +119,8 @@ public class EditTenantDetails extends AppCompatActivity {
         avatar.setImageDrawable(getDrawable(R.drawable.man));
         GetDatabaseTask getDatabaseTask = new GetDatabaseTask();
         getDatabaseTask.execute();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     @Override

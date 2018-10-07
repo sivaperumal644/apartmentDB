@@ -34,6 +34,8 @@ public class FlatView extends AppCompatActivity {
         viewFlatCity = findViewById(R.id.viewFlatCity);
         GetDatabaseTask getDatabaseTask = new GetDatabaseTask();
         getDatabaseTask.execute();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     @Override
@@ -50,7 +52,11 @@ public class FlatView extends AppCompatActivity {
             logOut();
             return true;
         }
-
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 

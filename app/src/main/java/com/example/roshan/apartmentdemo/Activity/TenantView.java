@@ -6,14 +6,13 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -22,8 +21,6 @@ import android.widget.Toast;
 
 import com.example.roshan.apartmentdemo.Database.QueryUtility;
 import com.example.roshan.apartmentdemo.R;
-
-import java.util.ArrayList;
 
 public class TenantView extends AppCompatActivity {
 
@@ -87,8 +84,10 @@ public class TenantView extends AppCompatActivity {
 
         GetDatabaseTask getDatabaseTask = new GetDatabaseTask();
         getDatabaseTask.execute();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -104,9 +103,14 @@ public class TenantView extends AppCompatActivity {
             logOut();
             return true;
         }
-
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
         return super.onOptionsItemSelected(item);
     }
+
 
     public void logOut() {
         QueryUtility.getInstance(getApplicationContext()).setSessionTable("null", "null");

@@ -23,8 +23,16 @@
         <activity android:name=".Activity.OwnerDashboardActivity" />
         <activity android:name=".Activity.flatlist" />
         <activity android:name=".Activity.tenantlist" />
-        <activity android:name=".Activity.EditTenantDetails" />
-        <activity android:name=".Activity.EditFlatDetails" />
+        <activity android:name=".Activity.EditTenantDetails">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.roshan.apartmentdemo.Activity.OwnerDashboardActivity" />
+        </activity>
+        <activity android:name=".Activity.EditFlatDetails">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.roshan.apartmentdemo.Activity.OwnerDashboardActivity" />
+        </activity>
         <activity android:name=".Activity.TenantView" />
         <activity android:name=".Activity.FlatView"></activity>
     </application>

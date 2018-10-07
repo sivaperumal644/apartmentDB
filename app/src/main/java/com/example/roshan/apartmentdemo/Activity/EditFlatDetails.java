@@ -5,16 +5,14 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.roshan.apartmentdemo.Database.QueryUtility;
@@ -22,7 +20,6 @@ import com.example.roshan.apartmentdemo.R;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class EditFlatDetails extends AppCompatActivity {
 
@@ -59,6 +56,8 @@ public class EditFlatDetails extends AppCompatActivity {
         avatar.setImageDrawable(getDrawable(R.drawable.flat));
         GetDatabaseTask getDatabaseTask = new GetDatabaseTask();
         getDatabaseTask.execute();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     @Override
@@ -132,7 +131,7 @@ public class EditFlatDetails extends AppCompatActivity {
 
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                ImageView flatAvatar = (ImageView) findViewById(R.id.editFlatAvatar);
+                ImageView flatAvatar = findViewById(R.id.editFlatAvatar);
                 flatAvatar.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();

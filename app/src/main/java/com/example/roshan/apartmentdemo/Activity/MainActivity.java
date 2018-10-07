@@ -36,16 +36,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         GetDatabaseTask getDatabaseTask = new GetDatabaseTask();
         getDatabaseTask.execute();
+        getSupportActionBar().hide();
     }
 
     public void startTenantLoginActivity(View view) {
         startActivity(new Intent(this, TenantLoginActivity.class));
-        finish();
+
     }
 
     public void startOwnerLoginActivity(View view) {
         startActivity(new Intent(this, OwnerLoginActivity.class));
-        finish();
+    
     }
 
     public void autoSignIn() {
