@@ -22,13 +22,9 @@ import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.roshan.apartmentdemo.Database.QueryUtility;
-import com.example.roshan.apartmentdemo.Helper.CustomAdapter;
 import com.example.roshan.apartmentdemo.R;
-
-import java.security.acl.Owner;
 
 public class OwnerDashboardActivity extends AppCompatActivity {
     ListView list, flatListView;
@@ -149,18 +145,19 @@ public class OwnerDashboardActivity extends AppCompatActivity {
             list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    //listener for tenant list
-                    String Slecteditem=tenantNames[+i];
-                    Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
-
+                    Intent tenantDetailsIntent = new Intent(OwnerDashboardActivity.this, TenantView.class);
+                    tenantDetailsIntent.putExtra("tenantID", view.getTag().toString());
+                    tenantDetailsIntent.putExtra("isOwner", true);
+                    startActivity(tenantDetailsIntent);
                 }
             });
             flatListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     //listener for flat list
-                    String Slecteditem=flatNames[+i];
-                    Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
+                    Intent flatDetailsIntent = new Intent(OwnerDashboardActivity.this, FlatView.class);
+                    flatDetailsIntent.putExtra("flatID", view.getTag().toString());
+                    startActivity(flatDetailsIntent);
                 }
             });
 
@@ -210,11 +207,13 @@ public class OwnerDashboardActivity extends AppCompatActivity {
             ImageView avatar = view.findViewById(R.id.image);
             String tenantNameString = cursor.getString(cursor.getColumnIndexOrThrow("name"));
             String tenantFlatString = cursor.getString(cursor.getColumnIndexOrThrow("flat"));
+            String tenantId = cursor.getString(cursor.getColumnIndexOrThrow("_id"));
             byte[] byteArray = cursor.getBlob(cursor.getColumnIndexOrThrow("image"));
             Bitmap bm = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
             tenantName.setText(tenantNameString);
             tenantFlat.setText(tenantFlatString);
             avatar.setImageBitmap(bm);
+            view.setTag(tenantId);
         }
     }
 
@@ -236,11 +235,13 @@ public class OwnerDashboardActivity extends AppCompatActivity {
             ImageView avatar = view.findViewById(R.id.image);
             String flatNameString = cursor.getString(cursor.getColumnIndexOrThrow("name"));
             String flatCityString = cursor.getString(cursor.getColumnIndexOrThrow("city"));
+            String flatId = cursor.getString(cursor.getColumnIndexOrThrow("_id"));
             byte[] byteArray = cursor.getBlob(cursor.getColumnIndexOrThrow("image"));
             Bitmap bm = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
             flatName.setText(flatNameString);
             flatCity.setText(flatCityString);
             avatar.setImageBitmap(bm);
+            view.setTag(flatId);
         }
     }
 

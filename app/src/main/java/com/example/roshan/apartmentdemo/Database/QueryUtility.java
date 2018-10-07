@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.strictmode.SqliteObjectLeakedViolation;
 import android.widget.Toast;
 
 import com.example.roshan.apartmentdemo.R;
@@ -144,6 +143,16 @@ public class QueryUtility extends SQLiteOpenHelper{
         return cursor;
     }
 
+    public Cursor getFlatData(int flatId) {
+        Cursor cursor;
+        if (flatId == 0) {
+            cursor = getReadableDatabase().rawQuery("SELECT * from flats", null);
+        } else {
+            cursor = getReadableDatabase().rawQuery("SELECT * from flats WHERE _id = '" + flatId + "';", null);
+        }
+        return cursor;
+    }
+
 
     public void insertTenant(String tenantId, String tenantName, String tenantFlatSelection, String tenantContact, String tenantEmail, String tenantPassword, int tenantRent, int tenantCharges, byte[] avatarBlob) {
         SQLiteDatabase db = getWritableDatabase();
@@ -204,11 +213,7 @@ public class QueryUtility extends SQLiteOpenHelper{
             Cursor cursor = db.rawQuery("SELECT password FROM " + TENANTS_TABLE + " WHERE _id = '" + id + "';", null);
             cursor.moveToLast();
             String truePassword = cursor.getString(cursor.getColumnIndexOrThrow("password"));
-            if (pass.equals(truePassword)) {
-                return true;
-            } else {
-                return false;
-            }
+            return pass.equals(truePassword);
         } catch(Exception e) {
             return false;
         }
