@@ -45,7 +45,7 @@ public class TenantLoginActivity extends AppCompatActivity {
             return;
         }
         if(QueryUtility.getInstance(this).allowPassage(userID.getText().toString().trim(), password.getText().toString().trim())) {
-            Intent tenantIntent = new Intent(TenantLoginActivity.this, TenantView.class);
+            Intent tenantIntent = new Intent(TenantLoginActivity.this, TenantDashboardActivity.class);
             QueryUtility queryUtility = QueryUtility.getInstance(getApplicationContext());
             tenantIntent.putExtra("tenantID", userID.getText().toString().trim());
             tenantIntent.putExtra("isOwner", false);

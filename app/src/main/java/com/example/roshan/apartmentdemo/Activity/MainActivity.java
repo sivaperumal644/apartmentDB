@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(QueryUtility queryUtility) {
             myQuery = queryUtility;
-            Toast.makeText(MainActivity.this, "Successfully connected to DB", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(MainActivity.this, "Successfully connected to DB", Toast.LENGTH_SHORT).show();
             //Toast.makeText(MainActivity.this, queryUtility.getSession(), Toast.LENGTH_SHORT).show();
             autoSignIn();
         }

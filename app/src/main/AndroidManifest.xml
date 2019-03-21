@@ -9,17 +9,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Activity.ServicesActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name=".Activity.TenantDashboardActivity" />
         <activity
-            android:name=".Activity.MainActivity"
-            android:theme="@style/AppTheme">
+            android:name=".Activity.SplashActivity"
+            android:noHistory="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.TenantLoginActivity" />
-        <activity android:name=".Activity.OwnerLoginActivity" />
+        <activity
+            android:name=".Activity.MainActivity"
+            android:noHistory="true"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activity.TenantLoginActivity"
+            android:noHistory="true" />
+        <activity
+            android:name=".Activity.OwnerLoginActivity"
+            android:noHistory="true" />
         <activity android:name=".Activity.OwnerDashboardActivity" />
         <activity android:name=".Activity.flatlist" />
         <activity android:name=".Activity.tenantlist" />
@@ -34,7 +46,7 @@
                 android:value="com.example.roshan.apartmentdemo.Activity.OwnerDashboardActivity" />
         </activity>
         <activity android:name=".Activity.TenantView" />
-        <activity android:name=".Activity.FlatView"></activity>
+        <activity android:name=".Activity.FlatView" />
     </application>
 
 </manifest>
