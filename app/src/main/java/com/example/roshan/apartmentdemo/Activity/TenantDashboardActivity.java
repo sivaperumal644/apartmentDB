@@ -1,6 +1,7 @@
 package com.example.roshan.apartmentdemo.Activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,8 +18,18 @@ public class TenantDashboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tenant_dashboard);
+        getSupportActionBar().setTitle("Dashboard");
 
         userID = getIntent().getStringExtra("tenantID");
+
+        LinearLayout flat = findViewById(R.id.flatDetails);
+        flat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TenantDashboardActivity.this, FlatView.class);
+                startActivity(intent);
+            }
+        });
 
         LinearLayout profile = findViewById(R.id.viewProfile);
         profile.setOnClickListener(new View.OnClickListener() {
@@ -29,6 +40,18 @@ public class TenantDashboardActivity extends AppCompatActivity {
                 profile.putExtra("tenantID", userID.trim());
                 profile.putExtra("isOwner", false);
                 startActivity(profile);
+            }
+        });
+
+        LinearLayout complaints = findViewById(R.id.logComplaints);
+        complaints.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "sivaperumal644@gmail.com" });
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Complaints");
+                startActivity(intent);
             }
         });
 

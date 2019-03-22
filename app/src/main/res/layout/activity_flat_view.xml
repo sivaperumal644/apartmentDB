@@ -15,8 +15,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp">
 
-            //(_id int PRIMARY KEY, name text, address text, city text, image blob)";
-
+            <!--//(_id int PRIMARY KEY, name text, address text, city text, image blob)";
+-->
             <ImageView
                 android:id="@+id/viewflatAvatar"
                 android:layout_width="100dp"

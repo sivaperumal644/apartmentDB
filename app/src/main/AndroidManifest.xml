@@ -9,8 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.ServicesActivity"
+        <activity android:name=".Activity.ServicesDetailActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name=".Activity.HouseKeepingActivity" />
+        <activity android:name=".Activity.LaundryDetailsActivity" />
+        <activity android:name=".Activity.PlumberDetailsActivity" />
+        <activity android:name=".Activity.ElectricianDetailsActivity" />
+        <activity
+            android:name=".Activity.ServicesActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".Activity.TenantDashboardActivity" />
         <activity
             android:name=".Activity.SplashActivity"
