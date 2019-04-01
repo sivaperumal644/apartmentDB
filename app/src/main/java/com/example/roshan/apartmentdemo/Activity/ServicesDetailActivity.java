@@ -31,6 +31,7 @@ public class ServicesDetailActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(ServicesDetailActivity.this, ElectricianDetailsActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             });
         }
@@ -40,6 +41,7 @@ public class ServicesDetailActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(ServicesDetailActivity.this, PlumberDetailsActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             });
         }
@@ -49,6 +51,7 @@ public class ServicesDetailActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(ServicesDetailActivity.this, LaundryDetailsActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             });
         }
@@ -58,6 +61,7 @@ public class ServicesDetailActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(ServicesDetailActivity.this, HouseKeepingActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             });
         }

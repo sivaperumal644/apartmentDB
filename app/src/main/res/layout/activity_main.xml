@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<ScrollView android:layout_width="match_parent"
+<ScrollView
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -9,38 +8,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="120dp"
             android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/primaryDarkColor"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:text="Apartment Demo App"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                    android:textColor="#FFF" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:alpha="0.5"
-                    android:text="@string/developed"
-                    android:textColor="#FFF" />
-            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Welcome"
                 android:textAlignment="center"
                 android:padding="8dp"
+                android:textSize="28sp"
+                android:textAllCaps="true"
                 android:layout_marginTop="16dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
@@ -49,6 +26,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:text="Let's get you started"
+                android:textSize="15sp"
                 android:layout_marginBottom="16dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
             <Button
@@ -57,7 +35,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="16dp"
+                android:background="@drawable/round_buttons_sign"
+                android:layout_marginTop="60dp"
                 android:onClick="startTenantLoginActivity"
                 android:text="I'm a Tenant" />
 
@@ -67,7 +46,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/round_buttons_sign"
                 android:onClick="startOwnerLoginActivity"
                 android:text="I'm an owner" />
         </LinearLayout>

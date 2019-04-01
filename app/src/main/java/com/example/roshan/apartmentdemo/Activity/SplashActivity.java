@@ -17,7 +17,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         TextView title = findViewById(R.id.titleTextView);
-        String text = "<font color=#ffffff>Apartment</font><font color=#000000>DB</font>";
+        String text = "<font color=>Apartment</font><font color=#C96FA2> DB</font>";
         title.setText(Html.fromHtml(text));
 
         new Handler().postDelayed(new Runnable() {

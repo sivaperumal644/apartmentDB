@@ -54,53 +54,11 @@
 
         </LinearLayout>
 
-
-
-        <TextView
-            android:id="@+id/yourFlatTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/flatTop"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="Your Flats"
-            android:textColor="@android:color/black"
-            android:textSize="20sp"
-            android:layout_marginStart="28dp"
-            android:layout_marginLeft="28dp"
-            android:layout_marginTop="28dp"
-            android:textStyle="bold"/>
-
-        <LinearLayout
-            android:id="@+id/flatDetails"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="#B49C6666"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/yourFlatTextView"
-            android:layout_marginBottom="16dp">
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="View your Flat details"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_gravity="center"
-                android:gravity="center_horizontal"
-                android:textSize="16sp"
-                android:textColor="@android:color/black"/>
-
-        </LinearLayout>
-
         <TextView
             android:id="@+id/profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/flatDetails"
+            app:layout_constraintTop_toBottomOf="@id/flatTop"
             app:layout_constraintStart_toStartOf="parent"
             android:text="Your Profile"
             android:textColor="@android:color/black"

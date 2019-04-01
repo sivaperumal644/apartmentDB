@@ -1,5 +1,6 @@
 package com.example.roshan.apartmentdemo.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -20,26 +21,18 @@ public class TenantDashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tenant_dashboard);
         getSupportActionBar().setTitle("Dashboard");
 
-        userID = getIntent().getStringExtra("tenantID");
 
-        LinearLayout flat = findViewById(R.id.flatDetails);
-        flat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(TenantDashboardActivity.this, FlatView.class);
-                startActivity(intent);
-            }
-        });
+        userID =getSharedPreferences("session", Context.MODE_PRIVATE).getString("tenantID", "null");
 
         LinearLayout profile = findViewById(R.id.viewProfile);
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent profile = new Intent(TenantDashboardActivity.this, TenantView.class);
+                Intent profileIntent = new Intent(TenantDashboardActivity.this, TenantView.class);
                 QueryUtility queryUtility = QueryUtility.getInstance(getApplicationContext());
-                profile.putExtra("tenantID", userID.trim());
-                profile.putExtra("isOwner", false);
-                startActivity(profile);
+                profileIntent.putExtra("tenantID", userID.trim());
+                profileIntent.putExtra("isOwner", false);
+                startActivity(profileIntent);
             }
         });
 

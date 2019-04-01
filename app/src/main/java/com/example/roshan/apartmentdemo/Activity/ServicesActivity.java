@@ -58,6 +58,7 @@ public class ServicesActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent back = new Intent(ServicesActivity.this, TenantDashboardActivity.class);
                 startActivity(back);
+                finish();
             }
         });
     }

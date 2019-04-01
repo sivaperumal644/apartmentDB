@@ -101,12 +101,12 @@ public class QueryUtility extends SQLiteOpenHelper{
         Cursor cursor = getReadableDatabase().rawQuery("SELECT * from session;", null);
         if(cursor.moveToLast()) {
             if(cursor.getString(cursor.getColumnIndex("userID")).equals("null")) {
-                return null;
+                return "null";
             } else {
                 return cursor.getString(cursor.getColumnIndex("userID"));
             }
         }
-        return null;
+        return "null";
     }
 
     public void setSessionTable(String userID, String password) {

@@ -11,17 +11,20 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Activity.ServicesDetailActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity android:name=".Activity.HouseKeepingActivity" />
-        <activity android:name=".Activity.LaundryDetailsActivity" />
-        <activity android:name=".Activity.PlumberDetailsActivity" />
-        <activity android:name=".Activity.ElectricianDetailsActivity" />
+        <activity android:name=".Activity.HouseKeepingActivity"
+            android:noHistory="true"/>
+        <activity android:name=".Activity.LaundryDetailsActivity"
+            android:noHistory="true"/>
+        <activity android:name=".Activity.PlumberDetailsActivity"
+            android:noHistory="true"/>
+        <activity android:name=".Activity.ElectricianDetailsActivity"
+            android:noHistory="true"/>
         <activity
             android:name=".Activity.ServicesActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".Activity.TenantDashboardActivity" />
         <activity
             android:name=".Activity.SplashActivity"
-            android:noHistory="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,11 +37,9 @@
             android:noHistory="true"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Activity.TenantLoginActivity"
-            android:noHistory="true" />
+            android:name=".Activity.TenantLoginActivity" />
         <activity
-            android:name=".Activity.OwnerLoginActivity"
-            android:noHistory="true" />
+            android:name=".Activity.OwnerLoginActivity" />
         <activity android:name=".Activity.OwnerDashboardActivity" />
         <activity android:name=".Activity.flatlist" />
         <activity android:name=".Activity.tenantlist" />

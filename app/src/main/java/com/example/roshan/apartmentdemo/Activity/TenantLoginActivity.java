@@ -1,5 +1,6 @@
 package com.example.roshan.apartmentdemo.Activity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -47,9 +48,12 @@ public class TenantLoginActivity extends AppCompatActivity {
         if(QueryUtility.getInstance(this).allowPassage(userID.getText().toString().trim(), password.getText().toString().trim())) {
             Intent tenantIntent = new Intent(TenantLoginActivity.this, TenantDashboardActivity.class);
             QueryUtility queryUtility = QueryUtility.getInstance(getApplicationContext());
+            getSharedPreferences("session", Context.MODE_PRIVATE).edit().putString("account", "Tenant").commit();
+            getSharedPreferences("session", Context.MODE_PRIVATE).edit().putString("tenantID", userID.getText().toString()).commit();
             tenantIntent.putExtra("tenantID", userID.getText().toString().trim());
             tenantIntent.putExtra("isOwner", false);
             startActivity(tenantIntent);
+            finish();
         } else {
             Toast.makeText(this, "Oops, try again!", Toast.LENGTH_SHORT).show();
         }

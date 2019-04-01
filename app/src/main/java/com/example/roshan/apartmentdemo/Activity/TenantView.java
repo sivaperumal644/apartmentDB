@@ -1,5 +1,6 @@
 package com.example.roshan.apartmentdemo.Activity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -114,6 +115,7 @@ public class TenantView extends AppCompatActivity {
 
     public void logOut() {
         QueryUtility.getInstance(getApplicationContext()).setSessionTable("null", "null");
+        getSharedPreferences("session", Context.MODE_PRIVATE).edit().clear().commit();
         startActivity(new Intent(this, MainActivity.class));
         finish();
     }

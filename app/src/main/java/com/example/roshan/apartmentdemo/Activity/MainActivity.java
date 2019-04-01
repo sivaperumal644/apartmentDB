@@ -1,5 +1,6 @@
 package com.example.roshan.apartmentdemo.Activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -51,8 +52,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void autoSignIn() {
 
-        if(myQuery.getSession() == null) {
-            return;
+        if(getSharedPreferences("session", Context.MODE_PRIVATE).getString("account", "").equals("Tenant")){
+            Intent tdIntent = new Intent(this, TenantDashboardActivity.class);
+            tdIntent.putExtra("tenantID", getSharedPreferences("session", Context.MODE_PRIVATE).getString("tenantID", "null"));
+            startActivity(new Intent(this, TenantDashboardActivity.class));
+            finish();
         }
         if(myQuery.getSession().equals("owner")) {
             startActivity(new Intent(this, OwnerDashboardActivity.class));
