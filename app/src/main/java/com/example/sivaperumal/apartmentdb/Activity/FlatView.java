@@ -1,4 +1,4 @@
-package com.example.roshan.apartmentdemo.Activity;
+package com.example.sivaperumal.apartmentdb.Activity;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -12,8 +12,8 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.roshan.apartmentdemo.Database.QueryUtility;
-import com.example.roshan.apartmentdemo.R;
+import com.example.sivaperumal.apartmentdb.Database.QueryUtility;
+import com.example.sivaperumal.apartmentdb.R;
 
 public class FlatView extends AppCompatActivity {
 

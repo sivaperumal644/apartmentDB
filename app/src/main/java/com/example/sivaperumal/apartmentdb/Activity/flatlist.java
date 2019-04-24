@@ -1,4 +1,4 @@
-package com.example.roshan.apartmentdemo.Activity;
+package com.example.sivaperumal.apartmentdb.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,8 +8,8 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.roshan.apartmentdemo.Helper.CustomAdapter;
-import com.example.roshan.apartmentdemo.R;
+import com.example.sivaperumal.apartmentdb.Helper.CustomAdapter;
+import com.example.sivaperumal.apartmentdb.R;
 
 public class flatlist extends AppCompatActivity {
     ListView list;

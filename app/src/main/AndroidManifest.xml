@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.roshan.apartmentdemo">
+    package="com.example.sivaperumal.apartmentdb">
 
     <application
         android:allowBackup="true"
@@ -9,22 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.ServicesDetailActivity"
+        <activity android:name="com.example.sivaperumal.apartmentdb.Activity.ServicesDetailActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity android:name=".Activity.HouseKeepingActivity"
+        <activity android:name="com.example.sivaperumal.apartmentdb.Activity.HouseKeepingActivity"
             android:noHistory="true"/>
-        <activity android:name=".Activity.LaundryDetailsActivity"
+        <activity android:name="com.example.sivaperumal.apartmentdb.Activity.LaundryDetailsActivity"
             android:noHistory="true"/>
-        <activity android:name=".Activity.PlumberDetailsActivity"
+        <activity android:name="com.example.sivaperumal.apartmentdb.Activity.PlumberDetailsActivity"
             android:noHistory="true"/>
-        <activity android:name=".Activity.ElectricianDetailsActivity"
+        <activity android:name="com.example.sivaperumal.apartmentdb.Activity.ElectricianDetailsActivity"
             android:noHistory="true"/>
         <activity
-            android:name=".Activity.ServicesActivity"
+            android:name="com.example.sivaperumal.apartmentdb.Activity.ServicesActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".Activity.TenantDashboardActivity" />
+        <activity android:name="com.example.sivaperumal.apartmentdb.Activity.TenantDashboardActivity" />
         <activity
-            android:name=".Activity.SplashActivity"
+            android:name="com.example.sivaperumal.apartmentdb.Activity.SplashActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,28 +33,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity.MainActivity"
+            android:name="com.example.sivaperumal.apartmentdb.Activity.MainActivity"
             android:noHistory="true"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".Activity.TenantLoginActivity" />
+            android:name="com.example.sivaperumal.apartmentdb.Activity.TenantLoginActivity" />
         <activity
-            android:name=".Activity.OwnerLoginActivity" />
-        <activity android:name=".Activity.OwnerDashboardActivity" />
-        <activity android:name=".Activity.flatlist" />
-        <activity android:name=".Activity.tenantlist" />
-        <activity android:name=".Activity.EditTenantDetails">
+            android:name="com.example.sivaperumal.apartmentdb.Activity.OwnerLoginActivity" />
+        <activity android:name="com.example.sivaperumal.apartmentdb.Activity.OwnerDashboardActivity" />
+        <activity android:name="com.example.sivaperumal.apartmentdb.Activity.flatlist" />
+        <activity android:name="com.example.sivaperumal.apartmentdb.Activity.tenantlist" />
+        <activity android:name="com.example.sivaperumal.apartmentdb.Activity.EditTenantDetails">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.roshan.apartmentdemo.Activity.OwnerDashboardActivity" />
+                android:value="com.example.sivaperumal.apartmentdb.Activity.OwnerDashboardActivity" />
         </activity>
-        <activity android:name=".Activity.EditFlatDetails">
+        <activity android:name="com.example.sivaperumal.apartmentdb.Activity.EditFlatDetails">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.roshan.apartmentdemo.Activity.OwnerDashboardActivity" />
+                android:value="com.example.sivaperumal.apartmentdb.Activity.OwnerDashboardActivity" />
         </activity>
-        <activity android:name=".Activity.TenantView" />
-        <activity android:name=".Activity.FlatView" />
+        <activity android:name="com.example.sivaperumal.apartmentdb.Activity.TenantView" />
+        <activity android:name="com.example.sivaperumal.apartmentdb.Activity.FlatView" />
     </application>
 
 </manifest>

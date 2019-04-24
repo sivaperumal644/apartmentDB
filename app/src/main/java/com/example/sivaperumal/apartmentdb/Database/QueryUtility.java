@@ -1,4 +1,4 @@
-package com.example.roshan.apartmentdemo.Database;
+package com.example.sivaperumal.apartmentdb.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,7 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.widget.Toast;
 
-import com.example.roshan.apartmentdemo.R;
+import com.example.sivaperumal.apartmentdb.R;
 
 import java.io.ByteArrayOutputStream;
 

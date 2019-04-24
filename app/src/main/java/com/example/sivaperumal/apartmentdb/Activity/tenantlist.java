@@ -1,20 +1,15 @@
-package com.example.roshan.apartmentdemo.Activity;
+package com.example.sivaperumal.apartmentdb.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.roshan.apartmentdemo.Helper.CustomAdapter;
-import com.example.roshan.apartmentdemo.R;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.sivaperumal.apartmentdb.Helper.CustomAdapter;
+import com.example.sivaperumal.apartmentdb.R;
 
 public class tenantlist extends AppCompatActivity {
     ListView list;

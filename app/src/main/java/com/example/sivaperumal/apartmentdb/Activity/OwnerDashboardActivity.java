@@ -1,4 +1,4 @@
-package com.example.roshan.apartmentdemo.Activity;
+package com.example.sivaperumal.apartmentdb.Activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -23,8 +23,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.roshan.apartmentdemo.Database.QueryUtility;
-import com.example.roshan.apartmentdemo.R;
+import com.example.sivaperumal.apartmentdb.Database.QueryUtility;
+import com.example.sivaperumal.apartmentdb.R;
 
 public class OwnerDashboardActivity extends AppCompatActivity {
     ListView list, flatListView;

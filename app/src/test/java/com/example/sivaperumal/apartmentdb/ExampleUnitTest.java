@@ -1,4 +1,4 @@
-package com.example.roshan.apartmentdemo;
+package com.example.sivaperumal.apartmentdb;
 
 import org.junit.Test;
 

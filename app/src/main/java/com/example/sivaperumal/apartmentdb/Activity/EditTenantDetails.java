@@ -1,4 +1,4 @@
-package com.example.roshan.apartmentdemo.Activity;
+package com.example.sivaperumal.apartmentdb.Activity;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -17,8 +17,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.roshan.apartmentdemo.Database.QueryUtility;
-import com.example.roshan.apartmentdemo.R;
+import com.example.sivaperumal.apartmentdb.Database.QueryUtility;
+import com.example.sivaperumal.apartmentdb.R;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.example.roshan.apartmentdemo.Helper;
+package com.example.sivaperumal.apartmentdb.Helper;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.roshan.apartmentdemo.R;
+import com.example.sivaperumal.apartmentdb.R;
 
 public class CustomAdapter extends ArrayAdapter<String> {
 
